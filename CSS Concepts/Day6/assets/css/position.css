@@ -1,0 +1,69 @@
+
+body, html {
+  height: 2000px;
+} 
+
+div.static {
+  position: static;
+  border: 3px solid #73AD21;
+  top: 30px;   
+
+}
+
+div.relative {
+  position: relative;
+  top: 30px;
+  margin-top: 30px;
+  border: 3px solid #73AD21;
+}
+
+
+div.fixed {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  border: 3px solid #73AD21;
+}
+
+div.relative-abs {
+  /* position: relative; */
+  width: 400px;
+  top:  40px;
+  height: 200px;
+  border: 3px solid darkgreen;
+}
+
+div.absolute {
+  position: absolute;
+  margin-top: 80px;
+  right: 0;
+  width: 200px;
+  height: 100px;
+  border: 3px solid #73AD21;
+}
+
+div.res {
+  width:  900px;
+  height: 900px;
+  border: 3px solid #ade3ad;
+  /* position: relative; */
+}
+
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding: 5px;
+  background-color: #cae8ca;
+  border: 2px solid #4CAF50;
+}
+
+
+/*
+
+  Display  
+  position : sticky  , chorme , firefox
+  Safari :   -webkit- prefix 
+
+*/

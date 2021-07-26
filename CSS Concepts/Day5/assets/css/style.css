@@ -1,0 +1,27 @@
+body, html {
+    height: 100%;
+}
+
+
+.parent {
+    height: 300px;
+    background-color: lightgreen;
+    width: 50px;
+    padding: 10px;
+}
+
+
+
+.child {
+    height: 100%;
+    background-color: purple;
+    width: 50px;
+    width: 100%;
+}
+
+
+.viewport-height {
+    background-color: black;
+    height: 100vh;
+    width: 75px;
+}

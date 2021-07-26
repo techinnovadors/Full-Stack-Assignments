@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Display Property</title>
+
+    <link rel="stylesheet" href="./assets/css/Display.css">
+
+</head>
+
+
+
+<body>
+    <!--     
+    The display property is the most important CSS property for controlling layout.
+    The display property specifies if/how an element is displayed.
+
+    Every HTML element has a default display value depending on what type of element it is. The default display value for most elements is block or inline.
+
+    Important Values :
+        Block
+        Inline
+        None
+
+ -->
+
+
+    <h1>The display Property</h1>
+    <!-- 
+    An inline element does not start on a new line and only takes up as much width as necessary.
+    Examples of inline elements:
+
+        <span>
+        <a>
+        <img>
+
+-->
+
+
+    <h2>display: inline</h2>
+    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consequat scelerisque elit sit amet
+        consequat. Aliquam erat volutpat. <span class="a general">Aliquam</span> <span class="a general">venenatis</span> gravida nisl
+        sit amet facilisis. Nullam cursus fermentum velit sed laoreet. </div>
+
+    <!-- 
+        The display: inline-block Value
+        Compared to display: inline, the major difference is that display: inline-block allows to set a width and height on the element.
+
+        Also, with display: inline-block, the top and bottom margins/paddings are respected, but with display: inline they are not.
+
+        Compared to display: block, the major difference is that display: inline-block does not add a line-break after the element, so the element can sit next to other elements.
+    -->
+    <h2>display: inline-block</h2>
+    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consequat scelerisque elit sit amet
+        consequat. Aliquam erat volutpat. <span class="general b">Aliquam</span> <span class="general b">venenatis</span> gravida nisl
+        sit amet facilisis. Nullam cursus fermentum velit sed laoreet. </div>
+
+    <!-- 
+        Block-level Elements
+        A block-level element always starts on a new line and takes up the full width available (stretches out to the left and right as far as it can).
+    
+        Examples of block-level elements:
+            <div>
+            <h1> - <h6>
+            <p>
+            <form>
+            <header>
+            <footer>
+            <section>
+    -->
+
+    <h2>display: block</h2>
+    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consequat scelerisque elit sit amet
+        consequat. Aliquam erat volutpat. <span class="c general">DISPLAY NONE</span> <span
+            class="c general">DISPLAY NONE</span> gravida nisl
+        sit amet facilisis. Nullam cursus fermentum velit sed laoreet. </div>
+
+</body>
+
+</html>

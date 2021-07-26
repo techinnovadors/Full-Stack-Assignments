@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Position</title>
+
+    <link rel="stylesheet" href="./assets/css/position.css">
+
+</head>
+
+<body>
+
+
+    <!-- 
+        The position property specifies the type of positioning method used for an element (static, relative, fixed, absolute or sticky).
+
+        The position Property
+        The position property specifies the type of positioning method used for an element.
+
+        There are five different position values:
+
+            static
+            relative
+            fixed
+            absolute
+            sticky
+
+        Elements are then positioned using the top, bottom, left, and right properties. However, these properties will not work unless the position property is set first. They also work differently depending on the position value.
+     -->
+
+    <h2>position: static;</h2>
+
+    <p>An element with position: static; is not positioned in any special way; it is
+        always positioned according to the normal flow of the page:</p>
+
+    <div class="static">
+        This div element has position: static;
+    </div>
+
+
+
+    <h2>position: relative;</h2>
+
+    <p>An element with position: relative; is positioned relative to its normal position:</p>
+
+    <div class="relative">
+        This div element has position: relative;
+    </div>
+
+
+    <h2>position: fixed;</h2>
+
+    <p>An element with position: fixed; is positioned relative to the viewport, which means it always stays in the same
+        place even if the page is scrolled:</p>
+
+    <div class="fixed">
+        This div element has position: fixed;
+    </div>
+
+
+    <h2>position: absolute;</h2>
+
+    <p>An element with position: absolute; is positioned relative to the nearest positioned ancestor (instead of
+        positioned relative to the viewport, like fixed):</p>
+    <div class="res">
+
+        <div class="relative-abs">This div element has position: relative;
+            <div class="absolute">This div element has position: absolute;</div>
+        </div>
+
+    </div>
+
+
+
+
+    <p>Try to <b>scroll</b> inside this frame to understand how sticky positioning works.</p>
+
+    <div class="sticky">I am sticky!</div>
+
+    <div style="padding-bottom:2000px">
+        <p>In this example, the sticky element sticks to the top of the page (top: 0), when you reach its scroll
+            position.</p>
+        <p>Scroll back up to remove the stickyness.</p>
+        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset
+            concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum.
+            Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+        <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset
+            concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum.
+            Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+    </div>
+</body>
+
+</html>

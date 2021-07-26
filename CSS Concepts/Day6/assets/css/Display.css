@@ -1,0 +1,22 @@
+span.a {
+  display: inline;
+  /* the default for span */
+}
+
+span.b {
+  display: inline-block;
+}
+
+span.c {
+  display: block;
+
+}
+
+.general {
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  margin: 10px;
+  border: 1px solid blue;
+  background-color: yellow;
+}
