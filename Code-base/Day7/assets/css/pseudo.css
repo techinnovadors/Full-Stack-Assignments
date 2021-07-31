@@ -91,5 +91,8 @@ input:hover::placeholder {
 
 .child::before {
   content: "~~";
-  
+}
+
+.span-before{
+
 }

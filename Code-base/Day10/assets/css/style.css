@@ -1,0 +1,31 @@
+* {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+
+.header {
+  box-shadow: 0px 1px 4px #ccc;
+  height: 75px;
+}
+
+
+.bg-primary {
+  background-color: #04AA6D!important;
+}
+
+.logo {
+  width: 45px;
+  height: auto;
+}
+
+.br-50{
+  border-radius: 50%;
+} 
+
+.login-btn {
+  border-radius: 25px;
+  font-size: 12px;
+  width: 100px;
+  line-height: 2;
+  padding: 8px 16px;
+}

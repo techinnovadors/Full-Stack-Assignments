@@ -1,0 +1,98 @@
+.parent {
+  width: 500px;
+  height: 500px;
+  overflow: hidden;
+  background-color: grey;
+  /* padding: 10px; */
+}
+
+.child {
+  /* width: 150px;
+  height: 150px; */
+  background-color: lightblue;
+  color: black;
+  margin: 5px;
+  padding: 10px;
+  display: inline-block;
+  border: 0;
+}
+
+/*
+  Pseudo-class will be 
+
+  selector:pseudo-class 
+
+  :hover is when you hover on the elem
+
+  :active is when you have clicked and have NOT left the click
+
+  :focus after the active state
+*/
+/* .child:hover {
+  background-color: blue;
+  color: white;
+  outline: 1px solid blue;
+  outline-offset: 2px;
+}
+
+
+.child:active {
+  background-color: darkblue;
+  color: white;
+  outline: 1px solid darkblue;
+  outline-offset: 2px;
+} */
+
+
+/* .child:first-child {
+  background-color: darkslategrey;
+  color: white;
+  text-transform: uppercase;
+}
+
+.child:last-child {
+  background-color: darkgreen;
+  color: lightgray;
+  text-transform: uppercase;
+}
+ */
+
+
+ /*
+  number , keywords , formulae
+ */
+
+/* .child:nth-child(3n) {
+  background-color: white;
+  color: darkblue;
+  border: 1px solid blue;
+} */
+
+/* 
+.child:nth-child(even) {
+  background-color: white;
+  color: darkred;
+  border: 1px solid darkred;
+} */
+
+.child::selection {
+  background-color: azure;
+}
+
+input::placeholder{
+  color: darkblue;
+}
+
+input:hover::placeholder {
+  /* font-size: 0; */
+  color: aquamarine;
+}
+
+
+.child::before {
+  content: "~~";
+}
+
+.span-before{
+
+}

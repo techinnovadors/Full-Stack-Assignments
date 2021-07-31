@@ -1,52 +1,8 @@
-/* .flex-container {
-  /* We first create a flex layout context 
-  display: flex;
-  width: 900px;
-  /* Then we define the flow direction 
-     and if we allow the items to wrap 
-   * Remember this is the same as:
-   * flex-direction: row;
-   * flex-wrap: wrap;
-   
-  /* flex-flow: row wrap; 
-  /* flex-wrap: wrap; 
-   padding: 0; 
-  flex-direction: row;
-  /* Then we define how is distributed the remaining space 
-  justify-content: center;
-  align-items: center;
-  background-color: gray;
-  height: 500px;
-  padding: 10px;
-  list-style: none;
-}
-
-.flex-item {
-  background: tomato;
-  padding: 5px;
-  margin: 10px;
-  width: 200px;
-  height: 150px;
-  margin-top: 10px;
-  line-height: 150px;
-  color: white;
-  font-weight: bold;
-  font-size: 3em;
-  text-align: center;
-}
-
-.flex-item:first-child{
-  width: 300px;
-  height: 100px;
-  list-style: 100px;
-} */
-
-
 body {
   margin: 0;
 }
 
-
+/* 
 .navigation {
   display: flex;
   flex-flow: row wrap;
@@ -65,13 +21,13 @@ body {
 
 .navigation a:hover {
   background: #1565C0;
-  text-decoration: underline; 
+  text-decoration: underline;
 }
 
 
 @media all and (max-width: 800px) {
   .navigation {
-    justify-content: space-around;
+    justify-content: space-evenly;
   }
 }
 
@@ -91,8 +47,8 @@ body {
   .navigation li:last-of-type a {
     border-bottom: none;
   }
-} 
-/* 
+} */
+
 .wrapper {
   display: flex;
   flex-flow: row wrap;
@@ -100,9 +56,10 @@ body {
   text-align: center;
 }
 
+/* Select ALL Immediate Child nodes/elements of .wrapper */
 .wrapper>* {
   padding: 10px;
-  flex: 1 100%;
+  flex: 1 1 100%;
 }
 
 .header {
@@ -124,13 +81,14 @@ body {
 
 .aside-2 {
   background: hotpink;
-} */
-/* 
+}
+
+ 
 @media all and (min-width: 600px) {
   .aside {
     flex: 1 0 0;
   }
-}
+} 
 
 @media all and (min-width: 800px) {
   .main {
@@ -152,4 +110,4 @@ body {
   .footer {
     order: 4;
   }
-} */
+} 
