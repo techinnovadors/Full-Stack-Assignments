@@ -10,7 +10,7 @@
 
 
 .bg-primary {
-  background-color: #04AA6D!important;
+  background-color: #04AA6D !important;
 }
 
 .logo {
@@ -18,14 +18,54 @@
   height: auto;
 }
 
-.br-50{
+.br-50 {
   border-radius: 50%;
-} 
+}
 
 .login-btn {
   border-radius: 25px;
   font-size: 12px;
-  width: 100px;
+  max-width: 100px;
+  min-width: 80px;
+  width: 100%;
   line-height: 2;
   padding: 8px 16px;
+}
+
+.header .row>* {
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.primary-hover{
+  min-width: 90px;
+}
+
+.primary-hover:hover {
+  background-color: #04AA6D;
+  color: white;
+}
+
+
+.primary-hover:hover i {
+  transform: rotateX(180deg);
+}
+
+@media (min-width:861px) {
+  .d-xm-flex {
+    display: flex!important;
+  }
+
+  .d-xm-none{
+    display: none!important;
+  }
+}
+
+
+@media (min-width:992px) {
+    .primary-hover{
+      padding: 0 10px;
+    }
 }
