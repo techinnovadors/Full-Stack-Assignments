@@ -23,11 +23,18 @@
 }
 
 .login-btn {
-  border-radius: 25px;
-  font-size: 12px;
+  border-radius: 25px; 
   max-width: 100px;
   min-width: 80px;
   width: 100%;
+  line-height: 2;
+  padding: 8px 16px;
+}
+
+
+.span-primary-hover:hover {
+  border-radius: 25px;   
+  max-width: 150px;
   line-height: 2;
   padding: 8px 16px;
 }
@@ -39,7 +46,7 @@
   align-items: center;
 }
 
-.primary-hover{
+.primary-hover {
   min-width: 90px;
 }
 
@@ -55,17 +62,18 @@
 
 @media (min-width:861px) {
   .d-xm-flex {
-    display: flex!important;
+    display: flex !important;
   }
 
-  .d-xm-none{
-    display: none!important;
+  .d-xm-none {
+    display: none !important;
   }
+
 }
 
 
 @media (min-width:992px) {
-    .primary-hover{
-      padding: 0 10px;
-    }
+  .primary-hover {
+    padding: 0 10px;
+  }
 }
