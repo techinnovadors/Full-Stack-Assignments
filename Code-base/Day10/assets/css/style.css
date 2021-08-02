@@ -25,10 +25,10 @@
 .login-btn {
   border-radius: 25px; 
   max-width: 100px;
-  min-width: 80px;
   width: 100%;
-  line-height: 2;
-  padding: 8px 16px;
+  font-size: 12px;
+  min-width: 70px; 
+  padding: 8px 0px;
 }
 
 
@@ -50,6 +50,10 @@
   min-width: 90px;
 }
 
+i.fa-caret-down{
+  font-size: 18px;
+}
+
 .primary-hover:hover {
   background-color: #04AA6D;
   color: white;
@@ -58,6 +62,16 @@
 
 .primary-hover:hover i {
   transform: rotateX(180deg);
+}
+
+
+.nav-icons {
+  padding: 0 1em;
+  font-size: 18px;
+}
+
+.nav-icons:last-child{
+  padding-right: 0;
 }
 
 @media (min-width:861px) {
@@ -69,6 +83,9 @@
     display: none !important;
   }
 
+  .offset-xm-0{
+    margin: 0;
+  }
 }
 
 
