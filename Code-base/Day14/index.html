@@ -14,14 +14,14 @@
     <h1> Calculator Program in JavaScript </h1>
     <div class="formstyle">
         <form name="form1">
-            <input class="textview" name="textview">
+            <input class="textview" id="result" name="textview" disabled>
         </form>
         <center>
             <table>
                 <tr>
                     <td> <input class="btn" type="button" value="C" onclick="form1.textview.value = ' ' "> </td>
                     <td> <input class="btn" type="button" value="B" onclick="backspace()"> </td>
-                    <td> <input class="btn" type="button" value="/" onclick="insert('/')"> </td>
+                    <td> <input class="btn" id="div" type="button" value="/" onclick="insert('/')"> </td>
                     <td> <input class="btn" type="button" value="x" onclick="insert('*')"> </td>
                 </tr>
 
@@ -54,6 +54,8 @@
             </table>
         </center>
     </div>
+
+    <script src="./assets/js/main.js"></script>
 </body>
 
 </html>
