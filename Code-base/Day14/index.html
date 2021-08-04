@@ -13,15 +13,15 @@
 <body>
     <h1> Calculator Program in JavaScript </h1>
     <div class="formstyle">
-        <form name="form1">
-            <input class="textview" id="result" name="textview" disabled>
+        <form id="formEl" name="form1">
+            <div class="textview" id="result" name="textview" disabled>  asdsa   </div>
         </form>
         <center>
             <table>
                 <tr>
-                    <td> <input class="btn" type="button" value="C" onclick="form1.textview.value = ' ' "> </td>
+                    <td> <input class="btn" type="button" value="C" onclick="clear()"> </td>
                     <td> <input class="btn" type="button" value="B" onclick="backspace()"> </td>
-                    <td> <input class="btn" id="div" type="button" value="/" onclick="insert('/')"> </td>
+                    <td> <input class="btn divisionOP" id="div" type="button" value="/" onclick="insert('/')"> </td>
                     <td> <input class="btn" type="button" value="x" onclick="insert('*')"> </td>
                 </tr>
 
@@ -56,6 +56,7 @@
     </div>
 
     <script src="./assets/js/main.js"></script>
+    
 </body>
 
 </html>

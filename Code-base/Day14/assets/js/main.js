@@ -41,8 +41,8 @@
 
 var expression = document.getElementById("result");
 
-function insert(val) {
-  expression.value += val;
+function insert(param) {
+  expression.value += param;
 }
 
 function backspace() {
@@ -58,7 +58,16 @@ function equal() {
   expression.value = eval(expression.value);
 }
 
+
+
+
+function equalWithoutEval() {
+  console.log(expression.value); 
+}
 /**
+ * 
+ * 
+ *   
  * Eval input is string
  * 
  * 
@@ -67,3 +76,29 @@ function equal() {
  * and then it will execute.
  * 
  * **/
+
+
+
+
+/********************** */
+
+
+
+/****
+ * 
+ * 
+ * 
+ * payment( ac ){
+ * 
+ *  var a = verify(ac) {.....}  
+ * 
+ * 
+ * if(a === true)
+ *  var a = icici(ac){ ..... return [ac , ifsc , actype] };
+ * else 
+ *    throw error )
+ * }
+ * 
+ * 
+ * 
+ */
