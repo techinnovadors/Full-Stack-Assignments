@@ -1,0 +1,49 @@
+/* Create the Outer layout of the Calculator. */
+.formstyle {
+  width: 300px;
+  height: 330px;
+  margin: 20px auto;
+  border: 3px solid skyblue;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+  background-color: grey;
+}
+
+/* Display top horizontal bar that contain some information. */
+h1 {
+  text-align: center;
+  padding: 23px;
+  background-color: skyblue;
+  color: white;
+}
+
+input:hover {
+  background-color: green;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* It is used to create the layout for calculator button. */
+.btn {
+  width: 50px;
+  height: 50px;
+  font-size: 25px;
+  margin: 2px;
+  cursor: pointer;
+  background-color: red;
+  color: white;
+
+}
+
+/* It is used to display the numbers, operations and results. */
+.textview {
+  width: 223px;
+  margin: 5px;
+  font-size: 25px;
+  padding: 5px;
+  background-color: lightgreen;
+}
