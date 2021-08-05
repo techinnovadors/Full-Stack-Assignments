@@ -49,7 +49,7 @@ function backspace() {
   expression.value = expression.value.slice(0, -1);
 }
 
-function clear() {
+function clearInput() {
   expression.value = "";
 }
 
@@ -62,7 +62,38 @@ function equal() {
 
 
 function equalWithoutEval() {
-  console.log(expression.value); 
+
+  let expArr = [...expression.value];
+  console.log(expArr);
+  let ops = "*/+-",
+    tempNum = "",
+    result = 0;
+  //12+23*9;
+  for (let i = 0; i < expArr.length; i++) {
+    let ch = expArr[i];
+
+    if (ops.includes(ch)) {
+
+      switch (ch) {
+        case '+':
+          result += parseInt(tempNum);
+          break;
+        case '-':
+          result -= parseInt(tempNum);
+          break;
+        case '/':
+          result /= parseInt(tempNum);
+          break;
+        case '*':
+          result *= parseInt(tempNum);
+          break;
+      }
+      tempNum = "";
+    } else
+      tempNum += ch;
+  }
+
+  console.log(tempNum, result);
 }
 /**
  * 

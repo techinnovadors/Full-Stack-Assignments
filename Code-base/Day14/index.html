@@ -14,12 +14,12 @@
     <h1> Calculator Program in JavaScript </h1>
     <div class="formstyle">
         <form id="formEl" name="form1">
-            <div class="textview" id="result" name="textview" disabled>  asdsa   </div>
+            <input class="textview" id="result" name="textview" disabled>
         </form>
         <center>
             <table>
                 <tr>
-                    <td> <input class="btn" type="button" value="C" onclick="clear()"> </td>
+                    <td> <input class="btn" type="button" value="C" onclick="clearInput()" /> </td>
                     <td> <input class="btn" type="button" value="B" onclick="backspace()"> </td>
                     <td> <input class="btn divisionOP" id="div" type="button" value="/" onclick="insert('/')"> </td>
                     <td> <input class="btn" type="button" value="x" onclick="insert('*')"> </td>
@@ -43,7 +43,7 @@
                     <td> <input class="btn" type="button" value="1" onclick="insert(1)"> </td>
                     <td> <input class="btn" type="button" value="2" onclick="insert(2)"> </td>
                     <td> <input class="btn" type="button" value="3" onclick="insert(3)"> </td>
-                    <td rowspan=5> <input class="btn" style="height: 110px" type="button" value="=" onclick="equal()">
+                    <td rowspan=5> <input class="btn" style="height: 110px" type="button" value="=" onclick="equalWithoutEval()">
                     </td>
                 </tr>
                 <tr>
