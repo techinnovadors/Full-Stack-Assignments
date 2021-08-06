@@ -65,21 +65,9 @@ function generateColumn(imgSrc, imgAlt) {
 
 
 /***
- *      add_to_avaengers_arr() 
+ * add_to_avaengers_arr() 
  * 
  *      Add to avengers json.
  *      It will create a new column. 
- * 
- *      create a form. Handle to onsubmit of the form. 
- *      take values from two inputs(text)
- *      one for image name
- *      other for image alternative text
- * 
- * 
- *      onclick of submit get the values / 
- * 
- * 
- *     -------------Tricky part----------------
- *      Add to array and update the grid
  * 
  */ 

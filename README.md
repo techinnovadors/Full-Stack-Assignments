@@ -14,3 +14,6 @@ The List will keep increasing.
 That's all I have for now! 
 
 # trying  to create a git merge conflict 
+
+# create a new repo 
+# added the remote url of that repo, called it session to my local repo
