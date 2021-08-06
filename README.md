@@ -12,3 +12,7 @@ The List will keep increasing.
     1. Javascript (4)
 
 That's all I have for now! 
+
+
+# create a new repo 
+# added the remote url of that repo, called it session to my local repo
