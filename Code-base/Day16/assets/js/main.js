@@ -71,3 +71,21 @@ function generateColumn(imgSrc, imgAlt) {
  *      It will create a new column. 
  * 
  */ 
+
+
+/***
+ *      remove_an_avaengers_arr() 
+ * 
+ *      remove to avengers json.
+ *     It will delete a column when you click on the avenger image
+ * 
+ */ 
+
+
+
+
+function add_to_avaengers_arr() {
+
+
+
+}
