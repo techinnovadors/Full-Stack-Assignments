@@ -1,0 +1,14 @@
+{
+  "name": "day20",
+  "version": "1.0.0",
+  "description": "Understanding Node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vishal Jain",
+  "license": "ISC",
+  "dependencies": {
+    "http": "0.0.1-security"
+  }
+}
