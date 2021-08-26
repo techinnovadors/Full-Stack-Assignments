@@ -15,7 +15,3 @@ dbConn.on("open", function () {
 });
 
 module.exports = dbConn;
-
-
-
-

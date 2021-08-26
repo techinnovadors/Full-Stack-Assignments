@@ -1,10 +1,8 @@
-const express = require('express');
-const db = require("../database/db");
+const express = require('express'); 
 const router = express.Router();
 
 const authorModel = require("../models/authorModel")
 
-// 
 router.post('/', async (req, res) => {
     console.log(req);
 
@@ -25,3 +23,5 @@ router.post('/', async (req, res) => {
         });
     }
 })
+
+module.exports = router;
