@@ -1,9 +1,11 @@
 const express = require('express');
 const db = require("./database/db");
-
+// const bodyParser = require('body-parser');
 
 const app = express();
 
+// parse application/json
+app.use(express.json())
 const port = '8000';
 
 /**
@@ -26,6 +28,8 @@ const port = '8000';
  * 
  * 
  * ## Get Book based on Author Name.
+ * 
+ * 
  * 
  */
 
@@ -82,6 +86,33 @@ app.get("/books", (req, res) => {
     res.json(responseObj);
 })
 
+
+app.post('/books', (req, res) => {
+    console.log(req);
+
+    const {
+        book
+    } = req.body;
+ 
+    
+    if (db.books === undefined) db.books = [book];
+    else db.books.push(book);
+    res.json(db.books);
+})
+
+
+
+app.post('/authors', (req, res) => {
+    console.log(req);
+
+    const {
+        author
+    } = req.body;
+
+    if (db.authors === undefined) db.authors = [author];
+    else db.authors.push(author);
+    res.json(db.authors);
+})
 
 /**
  * 
@@ -163,6 +194,77 @@ app.get("/books/category/:category/author/:author", (req, res) => {
     }
     res.json(responseObj);
 })
+
+
+
+app.get("/authors/publications/:publisher_id", (req, res) => {
+    const {
+        publisher_id,
+    } = req.params;
+
+
+    var publisher = db.publications.filter((publisher) => publisher.id == publisher_id)[0],
+        result = [];
+
+    /***
+     * AL*ABL*PBL 
+     * 
+     * */
+    for (let i = 0; i < db.authors.length; i++) {
+        const author = db.authors[i];
+        console.log(author);
+        if (author.books.some(item => publisher.books.includes(item)))
+            result.push(author);
+
+        // for (let j = 0; j < author.books.length; j++) {
+        //     if (publisher.books.includes(author.books[i])) {
+        //         result.push(author);
+        //         break;
+        //     }
+        // }
+    }
+
+    var responseObj = {};
+    if (result.length == 0) {
+        responseObj = {
+            data: {},
+            message: `No authors found for publisher of ${publisher.name}`,
+            status: 404
+        }
+    } else {
+        responseObj = {
+            data: result,
+            message: `${result.length} authors found for book ID of ${publisher.name}`,
+            status: 200
+        }
+    }
+
+    res.json(responseObj);
+})
+
+
+
+
+
+/*********** post *************
+ * 
+ * 
+ * /BOOK/NEW
+ * /AUTHOR
+ * /PUBLICATION
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+
+
+
+
+
+
 
 
 app.listen(port, () => {
