@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
-const url = 'mongodb+srv://vjtron:pass_123@cluster0.syhxj.mongodb.net/sample_airbnb?retryWrites=true&w=majority';
+const password = encodeURIComponent('pass_123');
+
+const url = `mongodb+srv://vjtron:${password}@cluster0.syhxj.mongodb.net/sample_airbnb?retryWrites=true&w=majority`;
 
 mongoose.connect(url, {
     useNewUrlParser: true,
