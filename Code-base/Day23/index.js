@@ -26,6 +26,19 @@ app.use(express.json());
  * ## Get Book based on Author Name.
  * 
  * 
+ * Post
+ * ## Add New Author 
+ * ## Add new Book
+ * ## Add new Publication
+ * 
+ * Put
+ * ## Add new book to an author 
+ *      book should have that author id in authors array.
+ *      update the publication as well
+ * 
+ * ## Add 
+ *      
+ * 
  * 
  */
 
