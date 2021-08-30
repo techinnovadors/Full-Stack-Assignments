@@ -5,11 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const candies = [];
 
     const candyColors = [
-        "red",
-        "yellow",
-        "orange",
-        "green",
-        "purple"
+        'url(assets/images/red-candy.png)',
+        'url(assets/images/yellow-candy.png)',
+        'url(assets/images/orange-candy.png)',
+        'url(assets/images/purple-candy.png)',
+        'url(assets/images/green-candy.png)',
+        'url(assets/images/blue-candy.png)'
     ]
 
     function createBoard() {
@@ -20,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             candy.setAttribute("id", i);
 
             let randomColorIndex = Math.floor(Math.random() * candyColors.length);
-            candy.style.backgroundColor = candyColors[randomColorIndex];
+            candy.style.backgroundImage = candyColors[randomColorIndex];
             grid.appendChild(candy);
             candies.push(candy)
         }
@@ -46,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
 
     function dragStart() {
-        colorBeingDragged = this.style.backgroundColor;
+        colorBeingDragged = this.style.backgroundImage;
         candyBeingDragged = parseInt(this.id);
     }
 
@@ -55,11 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function dragDrop() {
-        colorBeingReplaced = this.style.backgroundColor;
+        colorBeingReplaced = this.style.backgroundImage;
         candyBeingReplaced = parseInt(this.id);
 
-        this.style.backgroundColor = colorBeingDragged;
-        candies[candyBeingDragged].style.backgroundColor = colorBeingReplaced;
+        this.style.backgroundImage = colorBeingDragged;
+        candies[candyBeingDragged].style.backgroundImage = colorBeingReplaced;
     }
 
     function dragEnd() {
@@ -88,10 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
             colorBeingReplaced = null;
             colorBeingDragged = null;
         } else if (candyBeingReplaced && !isValidMove) {
-            candies[candyBeingDragged].style.backgroundColor = colorBeingDragged;
-            candies[candyBeingReplaced].style.backgroundColor = colorBeingReplaced;
+            candies[candyBeingDragged].style.backgroundImage = colorBeingDragged;
+            candies[candyBeingReplaced].style.backgroundImage = colorBeingReplaced;
         }
-        
+
     }
 
 
