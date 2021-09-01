@@ -253,16 +253,21 @@ document.addEventListener('DOMContentLoaded', () => {
 /**
             Easy
  ---------------------------
+ 
  *  Reduce columns checks to one function
  *  Show the score on the page
- *  Have a reset game button. 
- *  Have a shuffle game button
- * 
- *       Intermediate
+ *  Have a reset game button.
+ *  Have a shuffle game button and allow only 3 shuffles
+  
+ *  Count number of Moves.
+ *  Have a win Condition
+        
+        Intermediate
  ---------------------------
- *  Make the game responsive  
  * 
- *        Difficult
+ *   Make the game responsive  
+ * 
+          Difficult  (Read About LocalStorage)
  ---------------------------
  *  Share game with someone 
  *  A Save game button  
