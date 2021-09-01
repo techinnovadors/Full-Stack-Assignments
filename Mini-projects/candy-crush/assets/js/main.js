@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
          * what is a valid move?
          * 
          *  we can swipe two adjacent candies only.
-         * 
+         * 23 23 24
          *  */
 
         let validMoves = [
@@ -81,13 +81,12 @@ document.addEventListener('DOMContentLoaded', () => {
             candyBeingDragged - width
         ]
 
-        console.log(candyBeingReplaced, "In drag End")
-
-        const isValidMove = validMoves.includes(candyBeingReplaced)
+        console.log(candyBeingReplaced, "In drag End", candyBeingDragged)
+        const inValidMove = (candyBeingDragged + candyBeingReplaced) % width == width - 1 &&
+            (candyBeingDragged % width == 0 || candyBeingReplaced % width == 0);
+        const isValidMove = validMoves.includes(candyBeingReplaced) && !inValidMove;
 
         if (candyBeingReplaced && isValidMove) {
-            checkRowforThree();
-
             candyBeingReplaced = null;
             candyBeingDragged = null;
             ImageBeingReplaced = null;
@@ -99,62 +98,222 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    function generateRandomCandies() { 
-        let len = width * (width - 1) - 1;  // 55
+    function generateRandomCandies() {
+        let len = width * (width - 1); // 55
         for (let i = 0; i < len; i++) {
             if (candies[i + width].style.backgroundImage === '') {
                 candies[i + width].style.backgroundImage = candies[i].style.backgroundImage
                 candies[i].style.backgroundImage = ''
-                // Candy in first row has no backgroud
-                if (i < width && candies[i].style.backgroundImage == '') {
-                    candies[i].style.backgroundImage = candyImages[
-                        Math.floor(Math.random() * candyImages.length)
-                    ];
-                }
+            }
+            // Candy in first row has no backgroud
+            if (i < width && candies[i].style.backgroundImage == '') {
+                candies[i].style.backgroundImage = candyImages[
+                    Math.floor(Math.random() * candyImages.length)
+                ];
             }
         }
     }
 
-    function checkRowforThree() {
+    function checkRow(no_of_candies) {
         let invalidIndex = [];
-        /**
-         * Get All Invalid  corner indices
-         */
-        for (let i = width - 2; i < width * width - 3; i += width)
+        let len = width * width - no_of_candies
+        for (let i = width - no_of_candies - 1; i <= len; i += width) {
+            ///pushing elements in invalidIndex
             invalidIndex.push(i, i + 1);
+            if (no_of_candies >= 4) invalidIndex.push(i + 2);
+            if (no_of_candies == 5) invalidIndex.push(i + 3);
+        }
 
-        for (let i = 0; i < width * width - 3; i++) {
-            let threeCandies = [i, i + 1, i + 2];
+        for (let i = 0; i <= len; i++) {
+            let candiesList = []
+            //populate candiesList
+            candiesList.push(i, i + 1, i + 2);
+            if (no_of_candies >= 4) candiesList.push(i + 3);
+            if (no_of_candies == 5) candiesList.push(i + 4);
+
             let desiredImage = candies[i].style.backgroundImage;
 
             /**
              * If i present in the  invalidIndex Array forget it;
              */
-
             if (invalidIndex.includes(i)) continue;
             /***
              * 
-             * 24  25  26
              * If Every Element satisfies the condition after arrow 
              * Or for every element the fuction returns true.
              * 
              * then the final result is true 
              */
-            let match = threeCandies.every(index => desiredImage != "" && candies[index].style.backgroundImage == desiredImage);
+            let match = candiesList.every(index => desiredImage != "" && candies[index].style.backgroundImage == desiredImage);
             if (match) {
-                score += 3;
+                score += no_of_candies;
+                // console.log(score)
+                candiesList.forEach(index => candies[index].style.backgroundImage = "")
+            }
+
+
+        }
+
+    }
+
+    // function checkRowforFive() {
+    //     let invalidIndex = [];
+    //     const len = width * width - 4; // **8 -4 = 60
+    //     /**
+    //      * Get All Invalid  corner indices
+    //      */
+    //     for (let i = width - 4; i < len; i += width)
+    //         invalidIndex.push(i, i + 1, i + 2, i + 3);
+
+    //     // console.log(invalidIndex)
+    //     for (let i = 0; i <= len; i++) {
+    //         let fiveCandies = [i, i + 1, i + 2, i + 3, i + 4];
+    //         let desiredImage = candies[i].style.backgroundImage;
+
+    //         /**
+    //          * If i present in the  invalidIndex Array forget it;
+    //          */
+
+    //         if (invalidIndex.includes(i)) continue;
+    //         /***
+    //          * 
+    //          * 24  25  26
+    //          * If Every Element satisfies the condition after arrow 
+    //          * Or for every element the fuction returns true.
+    //          * 
+    //          * then the final result is true 
+    //          */
+    //         let match = fiveCandies.every(index => desiredImage != "" && candies[index].style.backgroundImage == desiredImage);
+    //         if (match) {
+    //             score += 5;
+    //             // console.log(score)
+    //             fiveCandies.forEach(index => candies[index].style.backgroundImage = "")
+    //         }
+
+    //     }
+    // }
+
+    // function checkRowforFour() {
+    //     let invalidIndex = [];
+    //     const len = width * width - 3; // **8 -3 = 61
+    //     /**
+    //      * Get All Invalid  corner indices
+    //      */
+    //     for (let i = width - 3; i < len; i += width)
+    //         invalidIndex.push(i, i + 1, i + 2);
+    //     // console.log(invalidIndex)
+    //     for (let i = 0; i <= len; i++) {
+    //         let fourCandies = [i, i + 1, i + 2, i + 3];
+    //         let desiredImage = candies[i].style.backgroundImage;
+
+    //         /**
+    //          * If i present in the  invalidIndex Array forget it;
+    //          */
+    //         if (invalidIndex.includes(i)) continue;
+    //         /***
+    //          * 
+    //          * 24  25  26  27
+    //          * If Every Element satisfies the condition after arrow 
+    //          * Or for every element the fuction returns true.
+    //          * 
+    //          * then the final result is true 
+    //          */
+    //         let match = fourCandies.every(index => desiredImage != "" && candies[index].style.backgroundImage == desiredImage);
+    //         if (match) {
+    //             score += 4;
+    //             // console.log(score)
+    //             fourCandies.forEach(index => candies[index].style.backgroundImage = "")
+    //         }
+    //     }
+    // }
+
+    // function checkRowforThree() {
+    //     let invalidIndex = [];
+    //     const len = width * width - 2
+
+    //     /**
+    //      * Get All Invalid  corner indices
+    //      */
+    //     for (let i = width - 2; i < len; i += width)
+    //         invalidIndex.push(i, i + 1);
+
+    //     for (let i = 0; i <= len; i++) {
+    //         let threeCandies = [i, i + 1, i + 2];
+    //         let desiredImage = candies[i].style.backgroundImage;
+
+    //         /**
+    //          * If i present in the  invalidIndex Array forget it;
+    //          */
+
+    //         if (invalidIndex.includes(i)) continue;
+    //         /***
+    //          * 
+    //          * 24  25  26
+    //          * If Every Element satisfies the condition after arrow 
+    //          * Or for every element the fuction returns true.
+    //          * 
+    //          * then the final result is true 
+    //          */
+    //         let match = threeCandies.every(index => desiredImage != "" && candies[index].style.backgroundImage == desiredImage);
+    //         if (match) {
+    //             score += 3;
+    //             console.log(score)
+    //             threeCandies.forEach(index => candies[index].style.backgroundImage = "")
+    //         }
+
+    //     }
+    // }
+
+    function checkColumnforFive() {
+        let len = width * (width - 4);
+
+        for (let i = 0; i < len; i++) {
+            let fiveCandies = [i, i + width, i + width * 2, i + width * 3, i + width * 4];
+            let desiredImage = candies[i].style.backgroundImage;
+
+            /***
+             * 
+             * If Every Element satisfies the condition after arrow 
+             * Or for every element the fuction returns true.
+             * then the final result is true 
+             * 
+             */
+            let match = fiveCandies.every(index => desiredImage != "" && candies[index].style.backgroundImage == desiredImage);
+            if (match) {
+                score += 5;
                 console.log(score)
-                threeCandies.forEach(index => candies[index].style.backgroundImage = "")
+                fiveCandies.forEach(index => candies[index].style.backgroundImage = "")
             }
 
         }
     }
 
-    checkRowforThree();
+    function checkColumnforFour() {
+        let len = width * (width - 3);
 
+        for (let i = 0; i < len; i++) {
+            let fourCandies = [i, i + width, i + width * 2, i + width * 3];
+            let desiredImage = candies[i].style.backgroundImage;
+
+            /***
+             * 
+             * If Every Element satisfies the condition after arrow 
+             * Or for every element the fuction returns true.
+             * then the final result is true 
+             * 
+             */
+            let match = fourCandies.every(index => desiredImage != "" && candies[index].style.backgroundImage == desiredImage);
+            if (match) {
+                score += 4;
+                console.log(score)
+                fourCandies.forEach(index => candies[index].style.backgroundImage = "")
+            }
+
+        }
+    }
 
     function checkColumnforThree() {
-        let len = width * (width - 2) - 1;
+        let len = width * (width - 2);
 
         for (let i = 0; i < len; i++) {
             let threeCandies = [i, i + width, i + width * 2];
@@ -167,6 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
              * then the final result is true 
              * 
              */
+
             let match = threeCandies.every(index => desiredImage != "" && candies[index].style.backgroundImage == desiredImage);
             if (match) {
                 score += 3;
@@ -177,18 +337,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    checkColumnforThree();
 
-
-
-
-
+    function init() {
+        checkRow(5);
+        checkColumnforFive();
+        checkRow(4);
+        checkColumnforFour();
+        checkRow(3);
+        checkColumnforThree()
+        generateRandomCandies();
+    }
+    init();
 
 
     window.setInterval(function () {
-        checkColumnforThree()
-        checkRowforThree();
-        generateRandomCandies();
-    }, 500);
+        init()
+    }, 100);
 
 });
