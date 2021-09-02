@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             candy.style.backgroundImage = candyImages[randomImageIndex];
 
             grid.appendChild(candy);
+            
             candies.push(candy)
         }
     }
@@ -47,6 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
     candies.forEach(candy => candy.addEventListener("dragenter", function (e) {
         e.preventDefault();
     }));
+
+
+    document.getElementById("save_button").addEventListener('click', saveGame);
+
 
     function dragStart() {
         ImageBeingDragged = this.style.backgroundImage;
@@ -232,6 +237,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    function saveGame() {
+        let candiesInfo = [];
+        candies.forEach(candy => candiesInfo[candy.id] = candy.style.backgroundImage);
+        localStorage.setItem("board", JSON.stringify(candiesInfo));
+    }
+
+    function loadGame() {
+        let oldBoard = JSON.parse(localStorage.getItem("board"));
+
+        /***    
+         *  Create the board again.
+         *   use 
+         *      foreach.
+         *      getattribute
+         */
+    }
+
     function init() {
         checkRow(5);
         checkColumnforFive();
@@ -242,6 +264,11 @@ document.addEventListener('DOMContentLoaded', () => {
         generateRandomCandies();
     }
     init();
+
+
+
+
+
 
 
     window.setInterval(function () {
