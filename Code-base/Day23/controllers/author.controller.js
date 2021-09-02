@@ -21,8 +21,9 @@ const addAuthor = async (req, res) => {
         books_published,
         publications_associated
     } = req.body;
-
+    console.log(req.body)
     var errorMessage = [];
+
 
 
 
@@ -69,7 +70,7 @@ const addAuthor = async (req, res) => {
     try {
 
         if (errorMessage.length > 0) {
-            res.json({
+            return res.json({
                 data: errorMessage,
                 message: "Invalid Params sent"
             })
@@ -79,13 +80,12 @@ const addAuthor = async (req, res) => {
         const author = await authorModel.create({
             ...req.body
         });
-
-        res.json({
+        return res.json({
             data: author,
             message: "Successfull"
         });
     } catch (error) {
-        res.json({
+        return res.json({
             data: [],
             message: error
         });
