@@ -80,6 +80,7 @@ const addAuthor = async (req, res) => {
         const author = await authorModel.create({
             ...req.body
         });
+
         return res.json({
             data: author,
             message: "Successfull"

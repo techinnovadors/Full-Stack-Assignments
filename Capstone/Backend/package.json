@@ -1,0 +1,29 @@
+{
+  "name": "shape-ai-capstone",
+  "version": "1.0.0",
+  "description": "An ecommerce platform",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Ecommerce",
+    "Node",
+    "APIs",
+    "Mongodb",
+    "Express"
+  ],
+  "author": "Vishal Jain",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
