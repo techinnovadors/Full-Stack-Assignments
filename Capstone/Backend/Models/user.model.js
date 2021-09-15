@@ -64,18 +64,34 @@ const userSchema = mongoose.Schema({
 
 
 /**
- * 
  * Virtuals are properties not stored in the database.
  * They are only logically stored to perform computations on the document fields.
+ *
  */
 
-userSchema.virtual('password').set((password) => {
-    this.hash_password = bcrypt.hashSync(password, 100)
+/**
+ * 
+ *    client --> node server  [ server.js <--> route <--> controllers <--> model, save data to db   ]
+ *    
+ *    sending data to db , it will check for the virtuals
+ * 
+ * 
+ *    what will be the scope of the 'this' keyword? what will it contain / refer to ?
+ * 
+ * 
+ *    anonymous functions 
+ *    arrow functions -> the hash_password property of the const variable userSchema will be overwritten
+ *    general functions
+ */
+
+
+userSchema.virtual('password').set(function (password) {
+    this.hash_password = bcrypt.hashSync(password, 12)
 })
 
-userSchema.virtual('fullname').get(() => {
+userSchema.virtual('fullname').get(function () {
     return this.firstname + ' ' + this.lastname;
-}).set((fullname) => {
+}).set(function (fullname) {
     this.firstname = fullname.split(' ')[0];
     this.lastname = fullname.split(' ')[1];
 })

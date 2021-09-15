@@ -1,3 +1,10 @@
+const express = require('express');
+const router = express.Router();
+
+const {
+    signup
+} = require('../Controllers/user.controller');
+
 /**
  * route  /signup
  *
@@ -6,20 +13,11 @@
  *  fullname
  *  email
  *  password
- *  username
- *  contactname
- * 
- *   new userModel({
- *          password  --> correct
- *          hash_password --> wrong  
- * })
  * 
  * 
- * 
- * auth.controller.js
- * 
- *    signupUser 
- *           password = bcrpyt.hashSync...
- * 
- *        new userModel({hash_password:password})
  */
+router.post('/signup', signup);
+router.post('/signin', (req, res) => {});
+
+
+module.exports = router;
