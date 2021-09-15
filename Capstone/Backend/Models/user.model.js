@@ -49,7 +49,8 @@ const userSchema = mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ["user", "admin", "super-admin"]
+        enum: ["user", "admin", "super-admin"],
+        default: "user"
     },
     contact_number: {
         type: String
@@ -97,5 +98,18 @@ userSchema.virtual('fullname').get(function () {
 })
 
 
+/***
+ * 
+ * Methods / Functions that are generic and assoicated to a particular Model 
+ * 
+ */
+
+userSchema.methods = {
+
+    authenticate: function (password) {
+        return bcrypt.compareSync(password, this.hash_password)
+    }
+
+}
 
 module.exports = mongoose.model('User', userSchema);
