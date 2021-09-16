@@ -11,11 +11,8 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-
-const userRoutes = require('./Routes/user.route')
-
-app.use('/api', userRoutes);
-
+const indexRoutes = require('./Routes/index.route')
+app.use('/api', indexRoutes);
 
 //Start Server Call
 app.listen(process.env.PORT, () => {

@@ -60,6 +60,7 @@ signup = (req, res) => {
                 });
             }
             if (user) {
+
                 const token = generateJwtToken(user._id);
                 return res.json({
                     success: true,
@@ -105,7 +106,7 @@ signin = (req, res) => {
                     message: "User Login successfully",
                     data: {
                         data,
-                        token: token
+                        "token": token
                     }
                 })
 
