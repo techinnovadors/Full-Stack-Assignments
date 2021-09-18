@@ -3,9 +3,10 @@ const jsonwebtoken = require('jsonwebtoken');
 const userModel = require('../models/user.model');
 
 
-generateJwtToken = (_id) => {
+generateJwtToken = (_id, _role) => {
     return jsonwebtoken.sign({
-        id: _id
+        id: _id,
+        role: _role
     }, process.env.JWT_SECRET_KEY, {
         expiresIn: '1d'
     });
@@ -61,7 +62,7 @@ signup = (req, res) => {
             }
             if (user) {
 
-                const token = generateJwtToken(user._id);
+                const token = generateJwtToken(user._id, user.role);
                 return res.json({
                     success: true,
                     message: "User has been successfully saved",
