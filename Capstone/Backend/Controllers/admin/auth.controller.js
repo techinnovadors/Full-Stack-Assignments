@@ -1,18 +1,10 @@
-const jsonwebtoken = require('jsonwebtoken');
-
 const userModel = require('../models/user.model');
+const {
+    generateJwtToken
+} = require('../../helpers/helper');
 
 
-generateJwtToken = (_id, _role) => {
-    return jsonwebtoken.sign({
-        id: _id,
-        role: _role
-    }, process.env.JWT_SECRET_KEY, {
-        expiresIn: '1d'
-    });
-}
-
-signup = (req, res) => {
+const signup = (req, res) => {
 
     const {
         email,
@@ -38,12 +30,12 @@ signup = (req, res) => {
         if (data) {
             return res.json({
                 success: false,
-                message: "User Email Already Exists."
+                message: "Admin Email Already Exists."
             })
         }
 
 
-        const _user = new userModel({
+        const _admin = new userModel({
             email,
             firstname,
             lastname,
@@ -52,23 +44,23 @@ signup = (req, res) => {
             username: Math.random().toString(),
         });
 
-        _user.save((error, user) => {
+        _admin.save((error, admin) => {
             if (error) {
                 console.log(error);
 
                 return res.status(500).json({
                     success: false,
-                    message: "Some Error occurred while saving the user. Contact your administrator"
+                    message: "Some Error occurred while saving the admin. Contact your administrator"
                 });
             }
-            if (user) {
+            if (admin) {
 
-                const token = generateJwtToken(user._id, user.role);
+                const token = generateJwtToken(admin._id, admin.role);
                 return res.json({
                     success: true,
-                    message: "User has been successfully saved",
+                    message: "Admin has been successfully saved",
                     data: {
-                        user,
+                        admin,
                         token: token
                     }
                 })
@@ -77,7 +69,7 @@ signup = (req, res) => {
     })
 }
 
-signin = (req, res) => {
+const signin = (req, res) => {
 
     const {
         email,
@@ -102,10 +94,10 @@ signin = (req, res) => {
             const isAuthenticated = data.authenticate(password);
             if (isAuthenticated) {
 
-                const token = generateJwtToken(data._id);
+                const token = generateJwtToken(data._id, data.role);
                 return res.json({
                     success: true,
-                    message: "User Login successfully",
+                    message: "Admin Login successfully",
                     data: {
                         data,
                         "token": token
@@ -115,14 +107,14 @@ signin = (req, res) => {
             } else {
                 return res.json({
                     success: false,
-                    message: "User Login failed. Bad Authentication"
+                    message: "Admin Login failed. Bad Authentication"
                 })
             }
 
         } else {
             return res.json({
                 success: false,
-                message: "User Email Does not exist."
+                message: "Admin Email Does not exist."
             });
         }
     })

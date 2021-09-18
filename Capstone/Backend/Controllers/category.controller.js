@@ -2,7 +2,7 @@ const categoryModel = require('../models/category.model');
 
 const slugify = require('slugify')
 
-addNewCategory = (req, res) => {
+const addNewCategory = (req, res) => {
 
     const categoryInput = {
         name: req.body.name,
@@ -82,7 +82,7 @@ addNewCategory = (req, res) => {
  */
 
 
-getCategory = async (req, res) => {
+const getCategory = async (req, res) => {
 
     // categoryModel.find({}).exec((error, category) => {
     //     if (error) {

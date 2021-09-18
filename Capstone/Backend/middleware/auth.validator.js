@@ -3,7 +3,7 @@ const {
     validationResult
 } = require('express-validator');
 
-validateSignUpRequest = [
+const validateSignUpRequest = [
     check('firstname').notEmpty().withMessage("First Name is required"),
     check('lastname').notEmpty().withMessage("Last Name is required"),
     check('email').isEmail().withMessage("Validate Email is required"),
@@ -12,7 +12,7 @@ validateSignUpRequest = [
     }).withMessage("Password Min Length Should be 6 characters"),
 ]
 
-validateSignInRequest = [
+const validateSignInRequest = [
     check('email').isEmail().withMessage("Validate Email is required"),
     check('password').isLength({
         min: 6
@@ -20,11 +20,11 @@ validateSignInRequest = [
 ]
 
 
-isRequestCorrect = (req, res, next) => {
+const isRequestCorrect = (req, res, next) => {
     const errors = validationResult(req);
     console.log(errors)
     if (errors.array().length > 0) {
-        
+
         return res.status(400).json({
             success: false,
             message: "Invalid Request",
@@ -32,6 +32,11 @@ isRequestCorrect = (req, res, next) => {
         })
     }
     next();
+}
+
+
+const requireSignIn = (req, res, next) => {
+    
 }
 
 module.exports = {
