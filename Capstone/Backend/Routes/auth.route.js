@@ -10,8 +10,7 @@ const {
     validateSignUpRequest,
     validateSignInRequest,
     isRequestCorrect
-} = require('../middleware/auth.validator');
-
+} = require('../middleware/request.validator');
 
 /**
  * route  /signup

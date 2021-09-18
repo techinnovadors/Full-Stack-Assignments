@@ -4,13 +4,13 @@ const router = express.Router();
 const {
     signup,
     signin
-} = require('../../Controllers/auth.controller');
+} = require('../../Controllers/admin/auth.controller');
 
 const {
     validateSignUpRequest,
     validateSignInRequest,
     isRequestCorrect
-} = require('../../middleware/auth.validator');
+} = require('../../middleware/request.validator');
 
 
 /**

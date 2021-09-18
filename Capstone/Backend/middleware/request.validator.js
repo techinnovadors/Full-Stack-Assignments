@@ -20,6 +20,11 @@ const validateSignInRequest = [
 ]
 
 
+const validateCreateCategoryRequest = [
+    check('name').notEmpty().withMessage("Category Name is required")
+]
+
+
 const isRequestCorrect = (req, res, next) => {
     const errors = validationResult(req);
     console.log(errors)
@@ -34,13 +39,9 @@ const isRequestCorrect = (req, res, next) => {
     next();
 }
 
-
-const requireSignIn = (req, res, next) => {
-    
-}
-
 module.exports = {
     validateSignUpRequest,
     validateSignInRequest,
-    isRequestCorrect
+    validateCreateCategoryRequest,
+    isRequestCorrect,
 }

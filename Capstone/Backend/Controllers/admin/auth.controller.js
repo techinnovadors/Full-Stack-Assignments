@@ -1,4 +1,4 @@
-const userModel = require('../models/user.model');
+const userModel = require('../../models/user.model');
 const {
     generateJwtToken
 } = require('../../helpers/helper');
@@ -71,6 +71,7 @@ const signup = (req, res) => {
 
 const signin = (req, res) => {
 
+    console.log("Adminn Signin");
     const {
         email,
         password
@@ -90,6 +91,13 @@ const signin = (req, res) => {
         }
 
         if (data) {
+            console.log(data.role);
+            if (data.role != 'admin') {
+                return res.status(403).json({
+                    success: false,
+                    message: "Access Forbidden."
+                });
+            }
 
             const isAuthenticated = data.authenticate(password);
             if (isAuthenticated) {
@@ -99,7 +107,10 @@ const signin = (req, res) => {
                     success: true,
                     message: "Admin Login successfully",
                     data: {
-                        data,
+                        user: {
+                            fullname: data.fullname,
+                            email : data.email
+                        },
                         "token": token
                     }
                 })

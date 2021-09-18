@@ -60,7 +60,10 @@ const signup = (req, res) => {
                     success: true,
                     message: "User has been successfully saved",
                     data: {
-                        user,
+                        user: {
+                            fullname: user.fullname,
+                            email: user.email
+                        },
                         token: token
                     }
                 })
@@ -94,12 +97,15 @@ const signin = (req, res) => {
             const isAuthenticated = data.authenticate(password);
             if (isAuthenticated) {
 
-                const token = generateJwtToken(data._id);
+                const token = generateJwtToken(data._id, data.role);
                 return res.json({
                     success: true,
                     message: "User Login successfully",
                     data: {
-                        data,
+                        user: {
+                            fullname: data.fullname,
+                            email: data.email
+                        },
                         "token": token
                     }
                 })

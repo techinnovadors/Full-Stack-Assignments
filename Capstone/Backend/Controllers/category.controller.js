@@ -1,6 +1,7 @@
+const slugify = require('slugify')
+
 const categoryModel = require('../models/category.model');
 
-const slugify = require('slugify')
 
 const addNewCategory = (req, res) => {
 
