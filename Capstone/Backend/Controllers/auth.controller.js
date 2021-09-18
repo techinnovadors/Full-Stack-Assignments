@@ -1,4 +1,6 @@
 const userModel = require('../models/user.model');
+const nanoid = require('nanoid')
+
 const {
     generateJwtToken
 } = require('../helpers/helper');
@@ -41,7 +43,7 @@ const signup = (req, res) => {
             firstname,
             lastname,
             password,
-            username: Math.random().toString(),
+            username: nanoid(10),
         });
 
         _user.save((error, user) => {

@@ -1,15 +1,18 @@
 const slugify = require('slugify')
+const nanoid = require('nanoid')
 
 const categoryModel = require('../models/category.model');
 
 
 const addNewCategory = (req, res) => {
 
+    let slug = slugify(req.body.name, {
+        lower: true
+    }) + '-' + nanoid(8);
+
     const categoryInput = {
         name: req.body.name,
-        slug: slugify(req.body.name, {
-            lower: true
-        })
+        slug: slug
     };
 
     categoryInput.createdBy = req.user.id;
@@ -86,31 +89,30 @@ const addNewCategory = (req, res) => {
 
 const getCategory = async (req, res) => {
 
-    // categoryModel.find({}).exec((error, category) => {
-    //     if (error) {
-    //         console.log(error);
-    //         return res.status(500).json({
-    //             success: false,
-    //             message: "DB Error occurred. Contact your administrator",
-    //             error: error
-    //         });
-    //     }
+    categoryModel.find({}).exec((error, category) => {
+        if (error) {
+            console.log(error);
+            return res.status(500).json({
+                success: false,
+                message: `DB Error occurred. 
+                Contact your administrator`,
+                error: error
+            });
+        }
 
-    //     if (category) {
-    //         console.log("----------------------");
-    //         console.log(category);
-    //         const categoryTree = getCategoryTree(category);
-    //         console.log(categoryTree);
-    //         return res.status(200).json({
-    //             categoryTree
-    //         })
-    //     }
-    // });
-
+        if (category) {
+            console.log("----------------------");
+            console.log(category);
+            const categoryTree = getCategoryTree(category);
+            console.log(categoryTree);
+            return res.status(200).json({
+                categoryTree
+            })
+        }
+    });
 
     try {
         const category = await categoryModel.find({});
-
         return res.json({
             category
         })
@@ -118,7 +120,8 @@ const getCategory = async (req, res) => {
         console.log(error);
         return res.status(500).json({
             success: false,
-            message: "DB Error occurred. Contact your administrator",
+            message: `DB Error occurred. 
+            Contact your administrator`,
             error: error
         });
     }

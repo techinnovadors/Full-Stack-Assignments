@@ -13,6 +13,17 @@ const addNewProduct = (req, res) => {
         category,
     } = req.body
 
+    let productImageList = []
+    if (req.files.length > 0) {
+        productImageList = req.files.map((file) => {
+            return {
+                img: file.path
+            }
+        })
+    }
+    console.log(productImageList)
+
+
     const _product = new productModel({
         name,
         slug: slugify(name),
@@ -20,6 +31,7 @@ const addNewProduct = (req, res) => {
         description,
         quantity,
         category,
+        "productPicture": productImageList,
         createdBy: req.user.id
     })
 
@@ -43,6 +55,26 @@ const addNewProduct = (req, res) => {
 
 }
 
+
+const getProduct = async (req, res) => {
+
+    try {
+        const product = await productModel.find({});
+
+        return res.json({
+            product
+        })
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            success: false,
+            message: "DB Error occurred. Contact your administrator",
+            error: error
+        });
+    }
+}
+
 module.exports = {
-    addNewProduct
+    addNewProduct,
+    getProduct
 }
