@@ -25,6 +25,12 @@ const validateCreateCategoryRequest = [
 ]
 
 
+// const validateCreateProductRequest = [
+//     check('name').notEmpty().withMessage("Category Name is required"),
+//     check('price')
+// ]
+
+
 const isRequestCorrect = (req, res, next) => {
     const errors = validationResult(req);
     console.log(errors)

@@ -6,22 +6,24 @@ const categorySchema = mongoose.Schema({
         type: String,
         required: [true, "Please provide your Category Name"],
         trim: true
-    }, 
+    },
     slug: {
         type: String,
         required: [true, "Please provide your Category Slug"],
         trim: true,
         unique: true,
     },
-    type : {
+    type: {
         type: String,
     },
-    parentId : {
+    parentId: {
         type: String,
     },
-    // createdBy : {
-    //     type 
-    // }
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+    }
 
 }, {
     timestamps: true

@@ -12,6 +12,7 @@ const addNewCategory = (req, res) => {
         })
     };
 
+    categoryInput.createdBy = req.user.id;
     console.log(categoryInput);
 
     if (req.body.parentId) {
