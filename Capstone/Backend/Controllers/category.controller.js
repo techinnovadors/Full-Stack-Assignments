@@ -137,14 +137,20 @@ function createCategories(allCategories, id = null) {
 
 const generateCategoryData = (allCategories, parentId = null) => {
     const CategoryJSON = [];
-    let _parentId;
-    if (parentId != null) _parentId = parentId;
+    let _parentId; //undefined
+    if (parentId != null)
+        _parentId = parentId;
+
     let categories = allCategories.filter((cat) => cat.parentId == _parentId);
 
     for (let i = 0; i < categories.length; i++) {
         const element = categories[i];
         let categoryObj = {
-            element,
+            _id: element._id,
+            name: element.name,
+            slug: element.slug,
+            type: element.type,
+            parentId: element.parentId,
             "subCategory": generateCategoryData(allCategories, element._id)
         }
         CategoryJSON.push(categoryObj);
