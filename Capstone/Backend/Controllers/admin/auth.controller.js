@@ -75,7 +75,6 @@ const signup = (req, res) => {
 
 const signin = (req, res) => {
 
-    console.log("Adminn Signin");
     const {
         email,
         password
@@ -94,8 +93,7 @@ const signin = (req, res) => {
             });
         }
 
-        if (data) {
-            console.log(data.role);
+        if (data) { 
             if (data.role != 'admin') {
                 return res.status(403).json({
                     success: false,

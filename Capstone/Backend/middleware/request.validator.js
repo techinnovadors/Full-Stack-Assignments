@@ -24,16 +24,20 @@ const validateCreateCategoryRequest = [
     check('name').notEmpty().withMessage("Category Name is required")
 ]
 
-
-// const validateCreateProductRequest = [
-//     check('name').notEmpty().withMessage("Category Name is required"),
-//     check('price')
-// ]
+/**
+ * ---Difficult----
+ * custom validator
+ * 
+ * https://stackoverflow.com/questions/37339479/express-validator-to-validate-parameter-which-is-an-array
+ * https://express-validator.github.io/docs/custom-validators-sanitizers.html#example-converting-to-mongodbs-objectid
+ * */ 
+const validateAddToCartRequest = [
+    check('cartItems').notEmpty().withMessage("Please add one or more items to the cart")
+]
 
 
 const isRequestCorrect = (req, res, next) => {
     const errors = validationResult(req);
-    console.log(errors)
     if (errors.array().length > 0) {
 
         return res.status(400).json({
@@ -49,5 +53,6 @@ module.exports = {
     validateSignUpRequest,
     validateSignInRequest,
     validateCreateCategoryRequest,
+    validateAddToCartRequest,
     isRequestCorrect,
 }

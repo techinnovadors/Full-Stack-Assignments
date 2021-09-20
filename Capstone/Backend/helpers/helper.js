@@ -11,17 +11,41 @@ const generateJwtToken = (id, role) => {
 
 const ErrorArray = [];
 ErrorArray[500] = "DB Error Occurred. Contact your administrator"
+ErrorArray[400] = "Bad Request"
 
-const getErrorResponse = (statusCode, data = null, message = null) => {
+const getErrorResponse = (res, statusCode, message = null, error = null) => {
 
-    return {
+    return res.status(statusCode).json({
         success: false,
         message: message || ErrorArray[statusCode],
-    }
+        error: error || ""
+    })
+}
+
+
+const getResponseV1 = (res, statusCode, message = "", data = []) => {
+
+    return res.status(statusCode).json({
+        success: true,
+        message: message,
+        data: data
+    })
+}
+
+
+const getResponseV2 = (res, state, statusCode, message = "", data = []) => {
+
+    return res.status(statusCode).json({
+        success: state,
+        message: message,
+        data: data
+    })
 }
 
 
 module.exports = {
     generateJwtToken,
-    getErrorResponse
+    getErrorResponse,
+    getResponseV1,
+    getResponseV2
 }

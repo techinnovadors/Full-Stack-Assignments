@@ -21,8 +21,6 @@ const addNewProduct = (req, res) => {
             }
         })
     }
-    console.log(productImageList)
-
 
     const _product = new productModel({
         name,
@@ -60,7 +58,6 @@ const getProduct = async (req, res) => {
 
     try {
         const product = await productModel.find({});
-
         return res.json({
             product
         })

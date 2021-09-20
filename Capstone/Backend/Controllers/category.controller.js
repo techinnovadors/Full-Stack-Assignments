@@ -18,7 +18,7 @@ const addNewCategory = (req, res) => {
     };
 
     categoryInput.createdBy = req.user.id;
-    console.log(categoryInput);
+    
 
     if (req.body.parentId) {
         categoryInput.parentId = req.body.parentId;
@@ -88,7 +88,6 @@ const addNewCategory = (req, res) => {
  * 
  */
 
-
 const getCategory = async (req, res) => {
 
     try {
@@ -107,33 +106,6 @@ const getCategory = async (req, res) => {
         });
     }
 }
-
-
-///Prakhar's Logic
-
-function createCategories(allCategories, id = null) {
-
-
-
-    console.log("----", id);
-    var categories = allCategories.filter(c => c.parentId == id);
-    console.log(categories);
-    let arr = [];
-    for (let i = 0; i < categories.length; i++) {
-        const element = categories[i];
-        console.log(i, element.name);
-        var t = createCategories(allCategories, element._id);
-        arr.push(t);
-        CategoryJSON.push({
-            category: element,
-            subCategory: arr
-        })
-    }
-    return CategoryJSON;
-}
-
-
-///vj
 
 const generateCategoryData = (allCategories, parentId = null) => {
     const CategoryJSON = [];
