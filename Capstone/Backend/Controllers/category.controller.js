@@ -1,5 +1,7 @@
 const slugify = require('slugify')
-const nanoid = require('nanoid')
+const {
+    nanoid
+} = require('nanoid')
 
 const categoryModel = require('../models/category.model');
 

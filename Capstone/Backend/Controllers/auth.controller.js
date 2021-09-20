@@ -1,5 +1,7 @@
 const userModel = require('../models/user.model');
-const nanoid = require('nanoid')
+const {
+    nanoid
+} = require('nanoid')
 
 const {
     generateJwtToken

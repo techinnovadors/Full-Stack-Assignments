@@ -1,4 +1,6 @@
-const nanoid = require('nanoid')
+const {
+    nanoid
+} = require('nanoid')
 
 const userModel = require('../../models/user.model');
 const {
