@@ -89,32 +89,11 @@ const addNewCategory = (req, res) => {
 
 const getCategory = async (req, res) => {
 
-    categoryModel.find({}).exec((error, category) => {
-        if (error) {
-            console.log(error);
-            return res.status(500).json({
-                success: false,
-                message: `DB Error occurred. 
-                Contact your administrator`,
-                error: error
-            });
-        }
-
-        if (category) {
-            console.log("----------------------");
-            console.log(category);
-            const categoryTree = getCategoryTree(category);
-            console.log(categoryTree);
-            return res.status(200).json({
-                categoryTree
-            })
-        }
-    });
-
     try {
-        const category = await categoryModel.find({});
+        const category = await categoryModel.find({}, '_id name slug parentId type');
+        const resp = generateCategoryData(category);
         return res.json({
-            category
+            "data": resp
         })
     } catch (error) {
         console.log(error);
@@ -129,23 +108,49 @@ const getCategory = async (req, res) => {
 
 
 ///Prakhar's Logic
+
 function createCategories(allCategories, id = null) {
 
 
 
+    console.log("----", id);
     var categories = allCategories.filter(c => c.parentId == id);
-
-    var arr = [];
+    console.log(categories);
+    let arr = [];
     for (let i = 0; i < categories.length; i++) {
         const element = categories[i];
+        console.log(i, element.name);
         var t = createCategories(allCategories, element._id);
         arr.push(t);
-        return {
+        CategoryJSON.push({
             category: element,
             subCategory: arr
-        }
+        })
     }
+    return CategoryJSON;
 }
+
+
+///vj
+
+const generateCategoryData = (allCategories, parentId = null) => {
+    const CategoryJSON = [];
+    let _parentId;
+    if (parentId != null) _parentId = parentId;
+    let categories = allCategories.filter((cat) => cat.parentId == _parentId);
+
+    for (let i = 0; i < categories.length; i++) {
+        const element = categories[i];
+        let categoryObj = {
+            element,
+            "subCategory": generateCategoryData(allCategories, element._id)
+        }
+        CategoryJSON.push(categoryObj);
+    }
+    return CategoryJSON;
+}
+
+
 module.exports = {
     addNewCategory,
     getCategory
