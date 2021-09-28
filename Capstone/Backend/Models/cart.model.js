@@ -5,6 +5,7 @@ const cartSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true,
+        unique: true
     },
     cartItems: [{
         product: {
@@ -26,9 +27,9 @@ module.exports = mongoose.model('Cart', cartSchema);
 
 
 /***
- * Amazon  -- 
- *      Mobile  -- Cart  Mac, Screenguard and airpods 
+ * Amazon  --
+ *      Mobile  -- Cart  Mac, Screenguard and airpods
  *      Desktop -- Empty / Mac, Screenguard and airpods
- * 
- * 
+ *
+ *
  */
